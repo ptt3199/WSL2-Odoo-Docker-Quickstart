@@ -27,7 +27,7 @@ To retain Odoo and PostgreSQL data even after the containers are deleted, volume
 After successfully setting up Odoo, the next step is to enhance your development experience. Utilizing Odoo's source code directly allows for type hints and autocomplete features, which are essential for efficient development. Here's how to achieve this:
 
 1. **Install the Odoo IDE Extension**: A highly experienced Vietnamese programmer in the Odoo domain has developed an extension that significantly improves the development experience by providing type hints and autocomplete features. This extension is available for PyCharm and VSCode (currently under development). Visit [Odoo IDE](https://odoo-ide.com/) for installation. Note that a slight modification is needed for Docker users. The developer provides guidance on adjustments if the extension does not work as expected.
-2 **Configure Workspace Settings**: To enable type hints and autocomplete, you need to adjust your workspace settings to include the Odoo source code paths. Here's how:
+2. **Configure Workspace Settings**: To enable type hints and autocomplete, you need to adjust your workspace settings to include the Odoo source code paths. Here's how:
     - **Step 1**: Modify the Docker Compose to ensure the Odoo source code is accessible on your host machine.
         
         Add the following volume to the `web` service in the `docker-compose.yml` file:
