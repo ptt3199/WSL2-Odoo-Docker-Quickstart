@@ -1,0 +1,11 @@
+{
+    "python.languageServer": "None",
+    "python.analysis.extraPaths": [
+        "/path/you/want/odoo/to/be/on/your/machine",
+        "/path/to/your/odoo/addons"
+    ],
+    "python.autoComplete.extraPaths": [
+        "/path/you/want/odoo/to/be/on/your/machine",
+        "/path/to/your/odoo/addons"
+    ]
+}

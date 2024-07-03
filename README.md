@@ -22,12 +22,37 @@ The `docker-compose.yml` file is structured to ensure that the Odoo container (`
 
 To retain Odoo and PostgreSQL data even after the containers are deleted, volume setup is included. This ensures your data is safely stored and can be reused or restored.
 
-## Reference
+## Enhancing Development with Odoo IDE Extension
 
-For detailed information on the Docker image for Odoo, visit [Odoo Docker Official Page](https://registry.hub.docker.com/_/odoo).
+After successfully setting up Odoo, the next step is to enhance your development experience. Utilizing Odoo's source code directly allows for type hints and autocomplete features, which are essential for efficient development. Here's how to achieve this:
 
+1. **Install the Odoo IDE Extension**: A highly experienced Vietnamese programmer in the Odoo domain has developed an extension that significantly improves the development experience by providing type hints and autocomplete features. This extension is available for PyCharm and VSCode (currently under development). Visit [Odoo IDE](https://odoo-ide.com/) for installation. Note that a slight modification is needed for Docker users. The developer provides guidance on adjustments if the extension does not work as expected.
+2 **Configure Workspace Settings**: To enable type hints and autocomplete, you need to adjust your workspace settings to include the Odoo source code paths. Here's how:
+    - **Step 1**: Modify the Docker Compose to ensure the Odoo source code is accessible on your host machine.
+    - **Step 2**: Adjust your workspace settings to include the Odoo source code paths:
+        - Open the command palette with `Ctrl + Shift + P`.
+        - Type and select `Preference: Open Workspace Settings (JSON)`.
+        - Insert the following configuration:
+
+        ```json
+        {
+            "python.languageServer": "None",
+            "python.analysis.extraPaths": [
+                "/home/ptt-pc/odoo",
+                "/home/ptt-pc/learn_odoo/addons"
+            ],
+            "python.autoComplete.extraPaths": [
+                "/home/ptt-pc/odoo",
+                "/home/ptt-pc/learn_odoo/addons"
+            ]
+        }
+        ```
+This setup will enable type hints and autocomplete, making your Odoo development more efficient.
+
+## References
+For detailed information on the Docker image for Odoo, visit Odoo Docker Official Page.
+To enhance your development experience with the Odoo IDE Extension, visit Odoo IDE. A special shoutout to the developer for creating such a useful tool for the Odoo community.
 ## Conclusion
+This repository aims to simplify the process of setting up an Odoo development environment on WSL2 using Docker. By following the outlined steps, including the installation of the Odoo IDE Extension, you can quickly start learning and developing with Odoo without the hassle of complex installations.
 
-This repository aims to simplify the process of setting up an Odoo development environment on WSL2 using Docker. By following the outlined steps, you can quickly start learning and developing with Odoo without the hassle of complex installations.
-
-Happy coding!
+### Happy coding!
