@@ -29,6 +29,16 @@ After successfully setting up Odoo, the next step is to enhance your development
 1. **Install the Odoo IDE Extension**: A highly experienced Vietnamese programmer in the Odoo domain has developed an extension that significantly improves the development experience by providing type hints and autocomplete features. This extension is available for PyCharm and VSCode (currently under development). Visit [Odoo IDE](https://odoo-ide.com/) for installation. Note that a slight modification is needed for Docker users. The developer provides guidance on adjustments if the extension does not work as expected.
 2 **Configure Workspace Settings**: To enable type hints and autocomplete, you need to adjust your workspace settings to include the Odoo source code paths. Here's how:
     - **Step 1**: Modify the Docker Compose to ensure the Odoo source code is accessible on your host machine.
+        
+        Add the following volume to the `web` service in the `docker-compose.yml` file:
+
+        ```yaml
+        volumes:
+            - /desired/odoo/path:/opt/odoo
+        ```
+        #### Example: The odoo folder is mounted to the path `/home/user/odoo` on the host machine.
+        ![Docker Mount Example](assets/mount_example.png)
+        This volume will map the Odoo source code to the specified path on your host machine.
     - **Step 2**: Adjust your workspace settings to include the Odoo source code paths:
         - Open the command palette with `Ctrl + Shift + P`.
         - Type and select `Preference: Open Workspace Settings (JSON)`.
@@ -38,11 +48,11 @@ After successfully setting up Odoo, the next step is to enhance your development
         {
             "python.languageServer": "None",
             "python.analysis.extraPaths": [
-                "/path/you/want/odoo/to/be/on/your/machine",
+                "/desired/odoo/path",
                 "/path/to/your/odoo/addons"
             ],
             "python.autoComplete.extraPaths": [
-                "/path/you/want/odoo/to/be/on/your/machine",
+                "/desired/odoo/path",
                 "/path/to/your/odoo/addons"
             ]
         }
