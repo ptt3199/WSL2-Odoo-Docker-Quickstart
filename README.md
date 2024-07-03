@@ -38,12 +38,12 @@ After successfully setting up Odoo, the next step is to enhance your development
         {
             "python.languageServer": "None",
             "python.analysis.extraPaths": [
-                "/home/ptt-pc/odoo",
-                "/home/ptt-pc/learn_odoo/addons"
+                "/path/you/want/odoo/to/be/on/your/machine",
+                "/path/to/your/odoo/addons"
             ],
             "python.autoComplete.extraPaths": [
-                "/home/ptt-pc/odoo",
-                "/home/ptt-pc/learn_odoo/addons"
+                "/path/you/want/odoo/to/be/on/your/machine",
+                "/path/to/your/odoo/addons"
             ]
         }
         ```
