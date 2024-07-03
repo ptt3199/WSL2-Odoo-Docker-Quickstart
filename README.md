@@ -26,37 +26,42 @@ To retain Odoo and PostgreSQL data even after the containers are deleted, volume
 
 After successfully setting up Odoo, the next step is to enhance your development experience. Utilizing Odoo's source code directly allows for type hints and autocomplete features, which are essential for efficient development. Here's how to achieve this:
 
-1. **Install the Odoo IDE Extension**: A highly experienced Vietnamese programmer in the Odoo domain has developed an extension that significantly improves the development experience by providing type hints and autocomplete features. This extension is available for PyCharm and VSCode (currently under development). Visit [Odoo IDE](https://odoo-ide.com/) for installation. Note that a slight modification is needed for Docker users. The developer provides guidance on adjustments if the extension does not work as expected.
-2. **Configure Workspace Settings**: To enable type hints and autocomplete, you need to adjust your workspace settings to include the Odoo source code paths. Here's how:
-    - **Step 1**: Modify the Docker Compose to ensure the Odoo source code is accessible on your host machine.
+#### 1. **Install the Odoo IDE Extension**: 
+
+A highly experienced Vietnamese programmer in the Odoo domain has developed an extension that significantly improves the development experience by providing type hints and autocomplete features. This extension is available for PyCharm and VSCode (currently under development). Visit [Odoo IDE](https://odoo-ide.com/) for installation. Note that a slight modification is needed for Docker users. The developer provides guidance on adjustments if the extension does not work as expected.
+
+#### 2. **Mount Odoo Source Code to Host Machine**:
+    
+Modify the Docker Compose to ensure the Odoo source code is accessible on your host machine.
+Add the following volume to the `web` service in the `docker-compose.yml` file:
+
+```yaml
+volumes:
+    - /desired/odoo/path:/opt/odoo
+```
         
-        Add the following volume to the `web` service in the `docker-compose.yml` file:
+#### Example: The odoo folder is mounted to the path `/home/user/odoo` on the host machine.
+![Docker Mount Example](assets/mount_example.png)
+This volume will map the Odoo source code to the specified path on your host machine.
 
-        ```yaml
-        volumes:
-            - /desired/odoo/path:/opt/odoo
-        ```
-        #### Example: The odoo folder is mounted to the path `/home/user/odoo` on the host machine.
-        ![Docker Mount Example](assets/mount_example.png)
-        This volume will map the Odoo source code to the specified path on your host machine.
-    - **Step 2**: Adjust your workspace settings to include the Odoo source code paths:
-        - Open the command palette with `Ctrl + Shift + P`.
-        - Type and select `Preference: Open Workspace Settings (JSON)`.
-        - Insert the following configuration:
+#### 3. **Adjust your workspace settings to include the Odoo source code paths**
+- Open the command palette with `Ctrl + Shift + P`.
+- Type and select `Preference: Open Workspace Settings (JSON)`.
+- Insert the following configuration:
 
-        ```json
-        {
-            "python.languageServer": "None",
-            "python.analysis.extraPaths": [
-                "/desired/odoo/path",
-                "/path/to/your/odoo/addons"
-            ],
-            "python.autoComplete.extraPaths": [
-                "/desired/odoo/path",
-                "/path/to/your/odoo/addons"
-            ]
-        }
-        ```
+    ```json
+    {
+        "python.languageServer": "None",
+        "python.analysis.extraPaths": [
+            "/desired/odoo/path",
+            "/path/to/your/odoo/addons"
+        ],
+        "python.autoComplete.extraPaths": [
+            "/desired/odoo/path",
+            "/path/to/your/odoo/addons"
+        ]
+    }
+    ```
 This setup will enable type hints and autocomplete, making your Odoo development more efficient.
 
 ## References
